@@ -6,9 +6,10 @@ import GenerateAndSign from './components/GenerateAndSign'
 import SignArbitrary from './components/SignArbitrary'
 import WrapUnwrapSol from './components/WrapUnwrapSol'
 import KeyConverter from './components/KeyConverter'
+import CloseUsdcAccount from './components/CloseUsdcAccount'
 import './App.css'
 
-type TabId = 'sign' | 'generate' | 'build' | 'wrap' | 'keys'
+type TabId = 'sign' | 'generate' | 'build' | 'wrap' | 'keys' | 'closeUsdc'
 
 export default function AppOfflineSigner() {
   const { publicKey, connected } = useWallet()
@@ -79,6 +80,13 @@ export default function AppOfflineSigner() {
         >
           Key converter
         </button>
+        <button
+          className={tab === 'closeUsdc' ? 'tab tabActive' : 'tab'}
+          onClick={() => setTab('closeUsdc')}
+          type="button"
+        >
+          Close USDC account
+        </button>
       </div>
 
       <main className="appMain">
@@ -90,8 +98,10 @@ export default function AppOfflineSigner() {
           <BuildAndSign />
         ) : tab === 'wrap' ? (
           <WrapUnwrapSol />
-        ) : (
+        ) : tab === 'keys' ? (
           <KeyConverter />
+        ) : (
+          <CloseUsdcAccount />
         )}
       </main>
 

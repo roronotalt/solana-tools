@@ -25,6 +25,11 @@ Solana wallet-adapter (Phantom, Solflare).
   array, hex, base58 → keypair JSON (Solana CLI format), base58 full
   keypair (Phantom / Solflare export format), base58 seed only, and
   derived public key. Accepts 32-byte seeds and 64-byte full keypairs.
+- **Close USDC account** — derives your USDC associated token account
+  (mainnet mint `EPjFWdd5AufqSSqeM2qN1xzybapC8G4wEGGkZwyTDt1v`),
+  builds an SPL `CloseAccount` instruction, and refunds the rent
+  reserve (~0.00203 SOL) to your wallet. Token balance must be zero —
+  swap or transfer any remaining USDC out first.
 
 ## Setup
 
